@@ -5,12 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
-  <link rel="stylesheet" href="login-page.css">
-  <script defer src="login-page.js"></script>
+  <link rel="stylesheet" href="index.css">
+  <script defer src="index.js"></script>
 </head>
 
+<?php
+require_once "connect.php";
+?>
+
 <body>
-  <main id="main-holder">
+  <div id="main-holder">
     <h1 id="login-header">Login</h1>
     
     <div id="login-page-image-holder">
@@ -24,7 +28,7 @@
       <input type="button" value="Create Account" id="create-account-button">
     </form>
   
-  </main>
+  </div>
 </body>
 
 </html>
