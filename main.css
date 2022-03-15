@@ -1,37 +1,32 @@
-html{
-    height: 100%;
-    width: 100%
+body {
+    margin: 0;
 }
- 
-    #banner { 
-        position: absolute; 
-        top: 0; 
-        left: 0; 
-        background-color: black; 
-        width: 100%; 
-        height: 5%;
-    }
 
-    #banner-content {
-        display: grid; 
-        width: 100%; 
-        height: 100%;
-        margin: 0 auto; 
-        padding: 0px; 
-        border: 1px white;
-        text-align: center;
-        color: white;
-    }
-    #main-content { 
-        padding-top: 5%;
-    }
+.topnav {
+    width: 100%;
+    background-color: #333;
+    overflow: hidden;
+}
 
-    .BannerButton{
-        color: white;
-        background-color: grey;
-        border: white;
-        width: 5%;
-        height: 100%;
-        cursor: pointer;
-        border-width: 2px;
-    }
+.topnav-left {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav-right{
+    float: right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover{
+    background: #ddd;
+    color: black;
+}
