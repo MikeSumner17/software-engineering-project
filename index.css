@@ -95,6 +95,7 @@ html {
     background-color: #3a3a3a;
     cursor: pointer;
     outline: none;
+    font-style: normal;
   }
 
   #create-account-button {
