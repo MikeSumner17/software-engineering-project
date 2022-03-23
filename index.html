@@ -5,13 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="index.css?v=<?php echo time(); ?>">
   <script defer src="index.js"></script>
 </head>
-
-<?php
-require_once "connect.php";
-?>
 
 <body>
   <div id="main-holder">
@@ -21,10 +17,12 @@ require_once "connect.php";
       <img id="login-page-image" src="Barbell image.jpg" class="center">
     </div>
     
-    <form id="login-form">
-      <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
-      <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
+    <form action="authenticate.php" method="post" id="login-form">
+      <input type="text" name="username" id="username" class="login-form-field" placeholder="Username" required>
+      <input type="password" name="password" id="password" class="login-form-field" placeholder="Password" required>
+
       <input type="submit" value="Login" id="login-form-submit">
+      <!-- <input type="button" value="Create Account" id="create-account-link"> -->
       <input type="button" value="Create Account" id="create-account-button">
     </form>
   
