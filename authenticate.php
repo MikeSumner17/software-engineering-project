@@ -41,11 +41,11 @@ if ($stmt = $con->prepare('SELECT password FROM users WHERE user_name = ?')) {
             header('Location: main.php');
         } else {
             // Incorrect password
-            echo 'Incorrect username and/or password!';
+            ?><script> alert("Incorrect Username and/or Password"); window.history.back();</script><?php
         }
     } else {
         // Incorrect username
-        echo 'Incorrect username and/or password!';
+        ?><script> alert("Incorrect Username and/or Password"); window.history.back();</script><?php
     }
 
 	$stmt->close();
