@@ -1,13 +1,3 @@
-<?php
-// We need to use sessions, so you should always start sessions using the below code.
-session_start();
-// If the user is not logged in redirect to the login page...
-if (!isset($_SESSION['loggedin'])) {
-	header('Location: index.html');
-	exit;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,11 +10,10 @@ if (!isset($_SESSION['loggedin'])) {
     
     <body>
         <div class="topnav">
-            <a class="topnav-left" href="#addmember">Add Member</a>
-            <a class="topnav-left" href="#news">Search</a>
-            <a class="topnav-left" href="#contact">Plans</a>
+            <a class="topnav-left" href="../add_member/addmember.html">Add Member</a>
+            <a class="topnav-left" href="#search">Search</a>
+            <a class="topnav-left" href="#plans">Plans</a>
             <a class="topnav-right" href="logout.php">Log Out</a>
         </div> 
     </body>
-
 </html>

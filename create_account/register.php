@@ -37,7 +37,7 @@ if ($stmt = $con->prepare('SELECT password FROM users WHERE user_name = ?')) {
 	        //$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 	        $stmt->bind_param('ss', $_POST['username'], $_POST['password']);
 	        $stmt->execute();
-            header('Location: index.html');
+            header('Location: ../index.html');
         } else {
 	        // Something is wrong with the sql statement, check to make sure accounts table exists with all 3 fields.
 	        echo 'Could not prepare statement!';

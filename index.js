@@ -5,5 +5,5 @@ const createAccountButton = document.getElementById("create-account-button");
 
 createAccountButton.addEventListener("click", (e) => {
     e.preventDefault();
-    window.location.href = "createaccount.html";
+    window.location.href = ('create_account/createaccount.html');
 })
