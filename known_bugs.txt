@@ -1,0 +1,12 @@
+1. Members need to be assigned unique barcodes
+  -remove barcode option from addmember.php
+  -remove barcode option from sendmember.php
+  -adjust database members table, column barcode, to assign a unique numeric varchar(100) non-nullable identifying number
+  
+ 2. Adding Members Radio options currently arent required, and fill the membershiplevel field with null
+  -figure a way to make at least *one* of the radio options required
+  -change database member table, column membershiplevel type to varchar(100) non-nullable
+  -ensure that the data base reflects selected options
+  
+ 
+  
