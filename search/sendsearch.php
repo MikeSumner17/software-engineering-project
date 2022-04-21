@@ -110,8 +110,8 @@ if(is_numeric($_POST['search'])) {
                 }
             ?>
             <center>
-                <button onclick="window.location.href='search.html'" name="back" id="back" class="backbutton">Back</button>
-                <button onclick="window.location.href='../main/main.html'" name="back" id="back" class="backbutton">Main Menu</button>
+                <button onclick="window.location.href='search.php'" name="back" id="back" class="backbutton">Back</button>
+                <button onclick="window.location.href='../main/main.php'" name="back" id="back" class="backbutton">Main Menu</button>
             </center>
         </body>
         </html>
@@ -210,8 +210,8 @@ if(is_numeric($_POST['search'])) {
                 }
             ?>
             <center>
-                <button onclick="window.location.href='search.html'" name="back" id="back" class="backbutton">Back</button>
-                <button onclick="window.location.href='../main/main.html'" name="back" id="back" class="backbutton">Main Menu</button>
+                <button onclick="window.location.href='search.php'" name="back" id="back" class="backbutton">Back</button>
+                <button onclick="window.location.href='../main/main.php'" name="back" id="back" class="backbutton">Main Menu</button>
             </center>
         </body>
         </html>
