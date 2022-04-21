@@ -14,7 +14,7 @@ $con = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         $barcode = $_POST['barcode'];
         if(!$con->connect_error) {$con->query("UPDATE members SET membershiplevel = 'Standard' WHERE barcode ='$barcode'");}
         ?><script>
-        alert('Member has been downgraded.'); window.location.href = '../search.html';
+        alert('Member has been downgraded.'); window.location.href = '../search.php';
         </script><?php
         //header('Location: ../search.html');
 

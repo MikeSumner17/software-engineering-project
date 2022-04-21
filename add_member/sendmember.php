@@ -28,7 +28,7 @@ $date = date("m-d-Y", strtotime($_POST['dob']));
 if ($stmt = $con->prepare('INSERT INTO Team5GymManagementDB.members (firstname, lastname, dateofbirth, email, barcode, membershiplevel) VALUES (?, ?, ?, ?, ?, ?)')) {
 	$stmt->bind_param('ssssss', $_POST['firstname'], $_POST['lastname'], $date, $_POST['email'], $_POST['barcode'], $_POST['contact']);
 	$stmt->execute();
-    header('Location: ../main/main.html');
+    header('Location: ../main/main.php');
     //$stmt->close();
 } else {
 	// Something is wrong with the sql statement, check to make sure accounts table exists with all 3 fields.

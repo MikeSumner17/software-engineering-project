@@ -28,7 +28,7 @@ if (!isset($_SESSION['loggedin'])) {
       <input type="text" name="search" id="search" class="login-form-field" placeholder="Barcode or Last Name" required>
       <input type="submit" value="Search" id="login-form-submit">
     </form>
-    <button onclick="window.location.href='../main/main.html'" name="back" id="back" class="backbutton">Back</button>
+    <button onclick="window.location.href='../main/main.php'" name="back" id="back" class="backbutton">Back</button>
   </div>
 </body>
 
