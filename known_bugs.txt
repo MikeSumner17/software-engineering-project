@@ -8,5 +8,6 @@
   -change database member table, column membershiplevel type to varchar(100) non-nullable
   -ensure that the data base reflects selected options
   
+3. Add scripts for errors and redirect properly
  
   
