@@ -25,8 +25,8 @@ if (empty($_POST['firstname']) || empty($_POST['lastname'] || empty($_POST['dob'
 }
 
 $date = date("m-d-Y", strtotime($_POST['dob']));
-if ($stmt = $con->prepare('INSERT INTO Team5GymManagementDB.members (firstname, lastname, dateofbirth, email, barcode) VALUES (?, ?, ?, ?, ?)')) {
-	$stmt->bind_param('sssss', $_POST['firstname'], $_POST['lastname'], $date, $_POST['email'], $_POST['barcode']);
+if ($stmt = $con->prepare('INSERT INTO Team5GymManagementDB.members (firstname, lastname, dateofbirth, email, barcode, membershiplevel) VALUES (?, ?, ?, ?, ?, ?)')) {
+	$stmt->bind_param('ssssss', $_POST['firstname'], $_POST['lastname'], $date, $_POST['email'], $_POST['barcode'], $_POST['contact']);
 	$stmt->execute();
     header('Location: ../main/main.html');
     //$stmt->close();

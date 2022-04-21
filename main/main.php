@@ -8,22 +8,4 @@ if (!isset($_SESSION['loggedin'])) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MyGymManager</title>
-        <link rel="stylesheet" href="main.css?v=<?php echo time(); ?>">
-        <script defer src="main.js"></script>
-    </head>    
-    
-    <body>
-        <div class="topnav">
-            <a class="topnav-left" href="#addmember">Add Member</a>
-            <a class="topnav-left" href="#search">Search</a>
-            <a class="topnav-left" href="#plans">Plans</a>
-            <a class="topnav-right" href="logout.php">Log Out</a>
-        </div> 
-    </body>
-</html>
+

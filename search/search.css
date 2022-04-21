@@ -25,7 +25,6 @@ html {
     box-shadow: 0px 0px 5px 2px black;
   }
 
-  
   #login-page-image-holder{
     display: grid;
     justify-items: center;
@@ -60,9 +59,6 @@ html {
     opacity: 0;
   }
   
-  #error-msg-second-line {
-    display: block;
-  }
   
   #login-form {
     align-self: flex-start;
@@ -99,4 +95,15 @@ html {
     font-style: normal;
   }
 
-  
+  #back {
+    width: 75%;
+    padding: 7px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    background-color: #3a3a3a;
+    cursor: pointer;
+    outline: none;
+    font-style: normal;
+  }
