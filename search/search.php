@@ -1,223 +1,35 @@
 <?php
+// We need to use sessions, so you should always start sessions using the below code.
 session_start();
-
-DEFINE('DB_HOST', 'gymmanagementdb.cvouqioew9pk.us-east-1.rds.amazonaws.com');
-DEFINE('DB_USER', 'team5');
-DEFINE('DB_PASSWORD', 'team5sweng');
-DEFINE('DB_NAME', 'Team5GymManagementDB');
-
-// Create connection
-$con = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-
-// Now we check if the data was submitted, isset() function will check if the data exists.
-if (!isset($_POST['search'])) {
-	// Could not get the data that should have been sent.
-	exit('Please enter search target!');
-}
-// Make sure the submitted registration values are not empty.
-if (empty($_POST['search'])) {
-	// value is empty.
-	exit('Please enter search target');
-}
-$search = $_POST['search'];
-// add code here using is_numeric() to determine if the input is a barcode or a name. 
-if(is_numeric($_POST['search'])) {
-    // its a barcode!! proceed...
-    $member = $con->query("SELECT * FROM members WHERE barcode = $search");
-    if(mysqli_num_rows($member) > 0) {
-        ?><!DOCTYPE html>
-        <html>
-            <title>Found Member</title>
-        <body>
-            <table align="center" border="1px" style="width:600px; line-hight:40px;">
-                <tr>
-                    <th colspan="11"><h2>Results</h2></th>
-                </tr>
-                <t>
-                    <th> First Name </th>
-                    <th> Last Name </th>
-                    <th> Date of Birth </th>
-                    <th> Email </th>
-                    <th> Membership </th>
-                    <th> Modify </th>
-                    <th> Barcode </th>
-                    <th> Active? </th>
-                    <th> Modify </th>
-                    <th> Total Visits </th>
-                    <th>Check-in</th>
-                </t>
-            <?php
-                while($rows=mysqli_fetch_assoc($member)) {
-                    ?>
-                    <tr>
-                        <td><?php echo $rows['firstname']; ?></td>
-                        <td><?php echo $rows['lastname']; ?></td>
-                        <td><?php echo $rows['dateofbirth']; ?></td>
-                        <td><?php echo $rows['email']; ?></td>
-                        <td><?php echo $rows['membershiplevel']; ?></td>
-                        <td><?php 
-                                if($rows['membershiplevel'] == 'Standard') {
-                                // offer upgrade
-                                ?>
-                                <form action="actions/upgrade.php" method="post">
-                                <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
-                                <input type="submit" name="Upgrade"; value="Upgrade">
-                                </form>
-                                <?php
-                                } else {
-                                // offer downgrade
-                                ?>
-                                <form action="actions/downgrade.php" method="post">
-                                <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
-                                <input type="submit" name="Downgrade"; value="Downgrade">
-                                </form>
-                                <?php
-                                }
-                                ?></td>
-                        <td><?php echo $rows['barcode']; ?></td>
-                        <td><?php if($rows['active'] == 1) {
-                                        echo 'yes';
-                                    } else {
-                                        echo 'no';
-                                    } ?></td>
-                                                <td><?php 
-                            if($rows['active'] == 1) {
-                            // offer cancel
-                            ?>
-                            <form action="actions/cancel.php" method="post">
-                            <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
-                            <input type="submit" name="Cancel"; value="Cancel">
-                            </form>
-                            <?php    
-                            } else {
-                            // offer enroll
-                            ?>
-                            <form action="actions/enroll.php" method="post">
-                            <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
-                            <input type="submit" name="Enroll"; value="Enroll">
-                            </form>
-                            <?php  
-                            }
-                        ?>
-                        <td><?php echo $rows['checkins']; ?></td>
-                        <td><form action="actions/checkin.php" method="post">
-                            <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
-                            <input type="submit" name="Check-in"; value="Check-in">
-                            </form>
-                        </td>
-                    </tr>
-            <?php
-                }
-            ?>
-            <center>
-                <button onclick="window.location.href='search.html'" name="back" id="back" class="backbutton">Back</button>
-                <button onclick="window.location.href='../main/main.html'" name="back" id="back" class="backbutton">Main Menu</button>
-            </center>
-        </body>
-        </html>
-        <?php
-    } else {
-        ?><script> alert("Search Target Not In Database!"); window.history.back();</script><?php
-    }
-} else {
-    // its not a barcode! proceed...
-    $result = $con->query("SELECT * FROM members WHERE '$search' LIKE CONCAT('%',lastname,'%')");
-    //$members = "SELECT * FROM members WHERE lastname LIKE " .$con->quote($_POST['search']);
-    
-    if(mysqli_num_rows($result) > 0) {
-        ?><!DOCTYPE html>
-        <html>
-            <title>Found Members</title>
-        <body>
-            <table align="center" border="1px" style="width:600px; line-hight:40px;">
-                <tr>
-                    <th colspan="11"><h2>Results</h2></th>
-                </tr>
-                <t>
-                    <th> First Name </th>
-                    <th> Last Name </th>
-                    <th> Date of Birth </th>
-                    <th> Email </th>
-                    <th> Membership </th>
-                    <th> Modify </th>
-                    <th> Barcode </th>
-                    <th> Active? </th>
-                    <th> Modify </th>
-                    <th> Total Visits</th>
-                    <th>Check-in</th>
-                </t>
-            <?php
-                while($rows=mysqli_fetch_assoc($result)) {
-                    ?>
-                    <tr>
-                        <td><?php echo $rows['firstname']; ?></td>
-                        <td><?php echo $rows['lastname']; ?></td>
-                        <td><?php echo $rows['dateofbirth']; ?></td>
-                        <td><?php echo $rows['email']; ?></td>
-                        <td><?php echo $rows['membershiplevel']; ?></td>
-                        <td><?php 
-                                if($rows['membershiplevel'] == 'Standard') {
-                                // offer upgrade
-                                ?>
-                                <form action="actions/upgrade.php" method="post">
-                                <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
-                                <input type="submit" name="Upgrade"; value="Upgrade">
-                                </form>
-                                <?php
-                                } else {
-                                // offer downgrade
-                                ?>
-                                <form action="actions/downgrade.php" method="post">
-                                <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
-                                <input type="submit" name="Downgrade"; value="Downgrade">
-                                </form>
-                                <?php
-                                }
-                                ?></td>
-                        <td><?php echo $rows['barcode']; ?></td>
-                        <td><?php if($rows['active'] == 1) {
-                                        echo 'yes';
-                                    } else {
-                                        echo 'no';
-                                    } ?></td>
-                        <td><?php 
-                            if($rows['active'] == 1) {
-                            // offer cancel
-                            ?>
-                            <form action="actions/cancel.php" method="post">
-                            <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
-                            <input type="submit" name="Cancel"; value="Cancel">
-                            </form>
-                            <?php    
-                            } else {
-                            // offer enroll
-                            ?>
-                            <form action="actions/enroll.php" method="post">
-                            <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
-                            <input type="submit" name="Enroll"; value="Enroll">
-                            </form>
-                            <?php  
-                            }
-                        ?>
-                        <td><?php echo $rows['checkins']; ?></td>
-                        <td><form action="actions/checkin.php" method="post">
-                            <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
-                            <input type="submit" name="Check-in"; value="Check-in">
-                            </form>
-                        </td>
-                    </tr>
-            <?php
-                }
-            ?>
-            <center>
-                <button onclick="window.location.href='search.html'" name="back" id="back" class="backbutton">Back</button>
-                <button onclick="window.location.href='../main/main.html'" name="back" id="back" class="backbutton">Main Menu</button>
-            </center>
-        </body>
-        </html>
-        <?php
-    } else {
-        ?><script> alert("No Matching Results Found!"); window.history.back();</script><?php    
-    }
+// If the user is not logged in redirect to the login page...
+if (!isset($_SESSION['loggedin'])) {
+	header('Location: ../index.html');
+	exit;
 }
 ?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Member</title>
+  <link rel="stylesheet" href="search.css">
+  <script defer src="search.js"></script>
+</head>
+
+<body>
+  <div id="main-holder">
+    <h1 id="login-header">Find Member
+    </h1>
+    <form action="sendsearch.php" method="post" id="login-form">
+      <input type="text" name="search" id="search" class="login-form-field" placeholder="Barcode or Last Name" required>
+      <input type="submit" value="Search" id="login-form-submit">
+    </form>
+    <button onclick="window.location.href='../main/main.html'" name="back" id="back" class="backbutton">Back</button>
+  </div>
+</body>
+
+</html>
