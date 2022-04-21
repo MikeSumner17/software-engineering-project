@@ -31,44 +31,88 @@ if(is_numeric($_POST['search'])) {
         <body>
             <table align="center" border="1px" style="width:600px; line-hight:40px;">
                 <tr>
-                    <th colspan="9"><h2>Results</h2></th>
+                    <th colspan="11"><h2>Results</h2></th>
                 </tr>
                 <t>
-                    <th>-</th>
                     <th> First Name </th>
                     <th> Last Name </th>
                     <th> Date of Birth </th>
                     <th> Email </th>
                     <th> Membership </th>
+                    <th> Modify </th>
                     <th> Barcode </th>
                     <th> Active? </th>
-                    <th> Total Check-ins </th>
+                    <th> Modify </th>
+                    <th> Total Visits </th>
+                    <th>Check-in</th>
                 </t>
             <?php
                 while($rows=mysqli_fetch_assoc($member)) {
                     ?>
                     <tr>
-                    <td><form action="actions/checkin.php" method="post">
-                            <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
-                            <input type="submit" name="Check-in"; value="Check-in">
-                            </form>
-                        </td>
                         <td><?php echo $rows['firstname']; ?></td>
                         <td><?php echo $rows['lastname']; ?></td>
                         <td><?php echo $rows['dateofbirth']; ?></td>
                         <td><?php echo $rows['email']; ?></td>
                         <td><?php echo $rows['membershiplevel']; ?></td>
+                        <td><?php 
+                                if($rows['membershiplevel'] == 'Standard') {
+                                // offer upgrade
+                                ?>
+                                <form action="actions/upgrade.php" method="post">
+                                <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
+                                <input type="submit" name="Upgrade"; value="Upgrade">
+                                </form>
+                                <?php
+                                } else {
+                                // offer downgrade
+                                ?>
+                                <form action="actions/downgrade.php" method="post">
+                                <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
+                                <input type="submit" name="Downgrade"; value="Downgrade">
+                                </form>
+                                <?php
+                                }
+                                ?></td>
                         <td><?php echo $rows['barcode']; ?></td>
                         <td><?php if($rows['active'] == 1) {
                                         echo 'yes';
                                     } else {
                                         echo 'no';
                                     } ?></td>
+                                                <td><?php 
+                            if($rows['active'] == 1) {
+                            // offer cancel
+                            ?>
+                            <form action="actions/cancel.php" method="post">
+                            <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
+                            <input type="submit" name="Cancel"; value="Cancel">
+                            </form>
+                            <?php    
+                            } else {
+                            // offer enroll
+                            ?>
+                            <form action="actions/enroll.php" method="post">
+                            <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
+                            <input type="submit" name="Enroll"; value="Enroll">
+                            </form>
+                            <?php  
+                            }
+                        ?>
                         <td><?php echo $rows['checkins']; ?></td>
+                        <td><form action="actions/checkin.php" method="post">
+                            <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
+                            <input type="submit" name="Check-in"; value="Check-in">
+                            </form>
+                        </td>
                     </tr>
             <?php
                 }
             ?>
+            <center>
+                <button onclick="window.location.href='search.html'" name="back" id="back" class="backbutton">Back</button>
+                <button onclick="window.location.href='../main/main.html'" name="back" id="back" class="backbutton">Main Menu</button>
+            </center>
         </body>
         </html>
         <?php
@@ -87,44 +131,88 @@ if(is_numeric($_POST['search'])) {
         <body>
             <table align="center" border="1px" style="width:600px; line-hight:40px;">
                 <tr>
-                    <th colspan="8"><h2>Results</h2></th>
+                    <th colspan="11"><h2>Results</h2></th>
                 </tr>
                 <t>
-                    <th>-</th>
                     <th> First Name </th>
                     <th> Last Name </th>
                     <th> Date of Birth </th>
                     <th> Email </th>
                     <th> Membership </th>
+                    <th> Modify </th>
                     <th> Barcode </th>
                     <th> Active? </th>
-                    <th> Total Check-ins </th>
+                    <th> Modify </th>
+                    <th> Total Visits</th>
+                    <th>Check-in</th>
                 </t>
             <?php
                 while($rows=mysqli_fetch_assoc($result)) {
                     ?>
                     <tr>
-                        <td><form action="actions/checkin.php" method="post">
-                            <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
-                            <input type="submit" name="Check-in"; value="Check-in">
-                            </form>
-                        </td>
                         <td><?php echo $rows['firstname']; ?></td>
                         <td><?php echo $rows['lastname']; ?></td>
                         <td><?php echo $rows['dateofbirth']; ?></td>
                         <td><?php echo $rows['email']; ?></td>
                         <td><?php echo $rows['membershiplevel']; ?></td>
+                        <td><?php 
+                                if($rows['membershiplevel'] == 'Standard') {
+                                // offer upgrade
+                                ?>
+                                <form action="actions/upgrade.php" method="post">
+                                <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
+                                <input type="submit" name="Upgrade"; value="Upgrade">
+                                </form>
+                                <?php
+                                } else {
+                                // offer downgrade
+                                ?>
+                                <form action="actions/downgrade.php" method="post">
+                                <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
+                                <input type="submit" name="Downgrade"; value="Downgrade">
+                                </form>
+                                <?php
+                                }
+                                ?></td>
                         <td><?php echo $rows['barcode']; ?></td>
                         <td><?php if($rows['active'] == 1) {
                                         echo 'yes';
                                     } else {
                                         echo 'no';
                                     } ?></td>
+                        <td><?php 
+                            if($rows['active'] == 1) {
+                            // offer cancel
+                            ?>
+                            <form action="actions/cancel.php" method="post">
+                            <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
+                            <input type="submit" name="Cancel"; value="Cancel">
+                            </form>
+                            <?php    
+                            } else {
+                            // offer enroll
+                            ?>
+                            <form action="actions/enroll.php" method="post">
+                            <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
+                            <input type="submit" name="Enroll"; value="Enroll">
+                            </form>
+                            <?php  
+                            }
+                        ?>
                         <td><?php echo $rows['checkins']; ?></td>
+                        <td><form action="actions/checkin.php" method="post">
+                            <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
+                            <input type="submit" name="Check-in"; value="Check-in">
+                            </form>
+                        </td>
                     </tr>
             <?php
                 }
             ?>
+            <center>
+                <button onclick="window.location.href='search.html'" name="back" id="back" class="backbutton">Back</button>
+                <button onclick="window.location.href='../main/main.html'" name="back" id="back" class="backbutton">Main Menu</button>
+            </center>
         </body>
         </html>
         <?php
