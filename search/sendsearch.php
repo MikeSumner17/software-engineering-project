@@ -28,8 +28,9 @@ if(is_numeric($_POST['search'])) {
         ?><!DOCTYPE html>
         <html>
             <title>Found Member</title>
+            <link rel="stylesheet" href="sendsearch.css">
         <body>
-            <table align="center" border="1px" style="width:600px; line-hight:40px;">
+            <table>
                 <tr>
                     <th colspan="11"><h2>Results</h2></th>
                 </tr>
@@ -61,7 +62,7 @@ if(is_numeric($_POST['search'])) {
                                 ?>
                                 <form action="actions/upgrade.php" method="post">
                                 <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
-                                <input type="submit" name="Upgrade"; value="Upgrade">
+                                <input type="submit" name="Upgrade" id="mods"; value="Upgrade">
                                 </form>
                                 <?php
                                 } else {
@@ -69,7 +70,7 @@ if(is_numeric($_POST['search'])) {
                                 ?>
                                 <form action="actions/downgrade.php" method="post">
                                 <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
-                                <input type="submit" name="Downgrade"; value="Downgrade">
+                                <input type="submit" name="Downgrade" id="mods"; value="Downgrade">
                                 </form>
                                 <?php
                                 }
@@ -86,7 +87,7 @@ if(is_numeric($_POST['search'])) {
                             ?>
                             <form action="actions/cancel.php" method="post">
                             <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
-                            <input type="submit" name="Cancel"; value="Cancel">
+                            <input type="submit" name="Cancel" id="mods"; value="Cancel">
                             </form>
                             <?php    
                             } else {
@@ -94,7 +95,7 @@ if(is_numeric($_POST['search'])) {
                             ?>
                             <form action="actions/enroll.php" method="post">
                             <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
-                            <input type="submit" name="Enroll"; value="Enroll">
+                            <input type="submit" name="Enroll" id="mods"; value="Enroll">
                             </form>
                             <?php  
                             }
@@ -102,18 +103,20 @@ if(is_numeric($_POST['search'])) {
                         <td><?php echo $rows['checkins']; ?></td>
                         <td><form action="actions/checkin.php" method="post">
                             <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
-                            <input type="submit" name="Check-in"; value="Check-in">
+                            <input type="submit" name="Check-in" id="mods"; value="Check-in">
                             </form>
                         </td>
                     </tr>
             <?php
                 }
             ?>
-            <center>
-                <button onclick="window.location.href='search.php'" name="back" id="back" class="backbutton">Back</button>
-                <button onclick="window.location.href='../main/main.php'" name="back" id="back" class="backbutton">Main Menu</button>
-            </center>
+            </table>
         </body>
+        <br>
+        <center>
+                <button onclick="window.location.href='search.php'" name="back" id="menu" class="backbutton">Back</button>
+                <button onclick="window.location.href='../main/main.php'" name="back" id="menu" class="backbutton">Main Menu</button>
+            </center>
         </html>
         <?php
     } else {
@@ -128,8 +131,9 @@ if(is_numeric($_POST['search'])) {
         ?><!DOCTYPE html>
         <html>
             <title>Found Members</title>
+            <link rel="stylesheet" href="sendsearch.css">
         <body>
-            <table align="center" border="1px" style="width:600px; line-hight:40px;">
+            <table>
                 <tr>
                     <th colspan="11"><h2>Results</h2></th>
                 </tr>
@@ -161,7 +165,7 @@ if(is_numeric($_POST['search'])) {
                                 ?>
                                 <form action="actions/upgrade.php" method="post">
                                 <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
-                                <input type="submit" name="Upgrade"; value="Upgrade">
+                                <input type="submit" name="Upgrade" id="mods"; value="Upgrade">
                                 </form>
                                 <?php
                                 } else {
@@ -169,7 +173,7 @@ if(is_numeric($_POST['search'])) {
                                 ?>
                                 <form action="actions/downgrade.php" method="post">
                                 <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
-                                <input type="submit" name="Downgrade"; value="Downgrade">
+                                <input type="submit" name="Downgrade" id="mods"; value="Downgrade">
                                 </form>
                                 <?php
                                 }
@@ -186,7 +190,7 @@ if(is_numeric($_POST['search'])) {
                             ?>
                             <form action="actions/cancel.php" method="post">
                             <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
-                            <input type="submit" name="Cancel"; value="Cancel">
+                            <input type="submit" name="Cancel" id="mods"; value="Cancel">
                             </form>
                             <?php    
                             } else {
@@ -194,7 +198,7 @@ if(is_numeric($_POST['search'])) {
                             ?>
                             <form action="actions/enroll.php" method="post">
                             <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
-                            <input type="submit" name="Enroll"; value="Enroll">
+                            <input type="submit" name="Enroll" id="mods"; value="Enroll">
                             </form>
                             <?php  
                             }
@@ -202,18 +206,21 @@ if(is_numeric($_POST['search'])) {
                         <td><?php echo $rows['checkins']; ?></td>
                         <td><form action="actions/checkin.php" method="post">
                             <input type="hidden" name="barcode" value=<?php echo $rows['barcode']?>>
-                            <input type="submit" name="Check-in"; value="Check-in">
+                            <input type="submit" name="Check-in" id="mods"; value="Check-in">
                             </form>
                         </td>
                     </tr>
+
             <?php
                 }
             ?>
-            <center>
-                <button onclick="window.location.href='search.php'" name="back" id="back" class="backbutton">Back</button>
-                <button onclick="window.location.href='../main/main.php'" name="back" id="back" class="backbutton">Main Menu</button>
-            </center>
+            </table>
         </body>
+        <br>
+        <center>
+                <button onclick="window.location.href='search.php'" name="back" id="menu" class="backbutton">Back</button>
+                <button onclick="window.location.href='../main/main.php'" name="back" id="menu" class="backbutton">Main Menu</button>
+            </center>
         </html>
         <?php
     } else {
