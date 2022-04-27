@@ -14,19 +14,19 @@ if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
   }
 
-if (!isset($_POST['firstname'], $_POST['lastname'], $_POST['dob'], $_POST['email'], $_POST['barcode']) ) {
+if (!isset($_POST['firstname'], $_POST['lastname'], $_POST['dob'], $_POST['email']) ) {
     // Could not get the data that should have been sent.
-    exit('Please fill out all fields');
+    ?><script> alert("Did not recieve all fields"); window.history.back();</script><?php
 }
 
-if (empty($_POST['firstname']) || empty($_POST['lastname'] || empty($_POST['dob']) || empty($_POST['email']) || empty($_POST['barcode']))) {
+if (empty($_POST['firstname']) || empty($_POST['lastname'] || empty($_POST['dob']) || empty($_POST['email']))) {
 	// One or more values are empty.
-	exit('Please fill out all fields');
+	?><script> alert("Empty field detected."); window.history.back();</script><?php
 }
 
 $date = date("m-d-Y", strtotime($_POST['dob']));
-if ($stmt = $con->prepare('INSERT INTO Team5GymManagementDB.members (firstname, lastname, dateofbirth, email, barcode, membershiplevel) VALUES (?, ?, ?, ?, ?, ?)')) {
-	$stmt->bind_param('ssssss', $_POST['firstname'], $_POST['lastname'], $date, $_POST['email'], $_POST['barcode'], $_POST['contact']);
+if ($stmt = $con->prepare('INSERT INTO Team5GymManagementDB.members (firstname, lastname, dateofbirth, email, membershiplevel) VALUES (?, ?, ?, ?, ?)')) {
+	$stmt->bind_param('sssss', $_POST['firstname'], $_POST['lastname'], $date, $_POST['email'], $_POST['contact']);
 	$stmt->execute();
     header('Location: ../main/main.php');
     //$stmt->close();

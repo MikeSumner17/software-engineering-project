@@ -29,11 +29,10 @@ if (!isset($_SESSION['loggedin'])) {
       <input type="text" name="lastname" id="lastname" class="login-form-field" placeholder="Last Name" required>
       <input type="date" name="dob" id="dob" class="login-form-field" placeholder="Date of Birth" required>
       <input type="text" name="email" id="email" class="login-form-field" placeholder="Email" required>
-      <input type="text" name="barcode" id="barcode" class="login-form-field" placeholder="Barcode Number" required>
       <p>Membership Level:</p> 
       <div>
         <input type="radio" id="contactChoice1"
-         name="contact" value="Standard">
+         name="contact" value="Standard" required>
         <label for="contactChoice1">Standard</label><br>
     
         <input type="radio" id="contactChoice2"
