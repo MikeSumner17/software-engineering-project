@@ -110,6 +110,11 @@ if(is_numeric($_POST['search'])) {
             <?php
                 }
             ?>
+            <tfoot>
+                <tr>
+                    <td colspan=11>End of Results</td>
+                </tr>
+            </tfoot>
             </table>
         </body>
         <br>
@@ -214,6 +219,11 @@ if(is_numeric($_POST['search'])) {
             <?php
                 }
             ?>
+            <tfoot>
+                <tr>
+                    <td colspan=11>End of Results</td>
+                </tr>
+            </tfoot>
             </table>
         </body>
         <br>
