@@ -1,0 +1,47 @@
+html {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(85, 82, 82);
+    font-family: Arial, Helvetica, sans-serif;  
+}
+
+table {
+    width: 100%;
+    box-shadow: 0px 0px 5px 2px black;
+    border-radius: 5px;
+}
+
+th, td {
+      text-align: center;
+      background-color: white;
+      outline: none;
+}
+
+#menu {
+    max-width: 20%;
+    width: 75%;
+    padding: 7px;
+    border: none;
+    box-shadow: 0px 0px 1px 1px rgb(43, 42, 42);
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    background-color: #3a3a3a;
+    cursor: pointer;
+    outline: none;
+    font-style: normal;
+}
+
+
+#mods {
+    width: 75%;
+    padding: 3px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    background-color: #3a3a3a;
+    cursor: pointer;
+    outline: none;
+    font-style: normal;
+}
