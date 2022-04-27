@@ -29,7 +29,7 @@ if ($stmt = $con->prepare('SELECT password FROM users WHERE user_name = ?')) {
 	// Store the result so we can check if the account exists in the database.
 	if ($stmt->num_rows > 0) {
 		// Username already exists
-		echo 'Username exists, please choose another!';
+		?><script> alert("Username exists, please choose another!"); window.history.back();</script><?php
 	} else {
 		// Username doesnt exists, insert new account
         if ($stmt = $con->prepare('INSERT INTO users (user_name, password) VALUES (?, ?)')) {
@@ -40,13 +40,13 @@ if ($stmt = $con->prepare('SELECT password FROM users WHERE user_name = ?')) {
             header('Location: ../index.html');
         } else {
 	        // Something is wrong with the sql statement, check to make sure accounts table exists with all 3 fields.
-	        echo 'Could not prepare statement!';
+			?><script> alert("Could not prepare statment!"); window.history.back();</script><?php
         }
 	}
 	$stmt->close();
 } else {
 	// Something is wrong with the sql statement, check to make sure accounts table exists with all 3 fields.
-	echo 'Could not prepare statement!';
+	?><script> alert("Could not prepare statment!"); window.history.back();</script><?php
 }
 $con->close();
 ?>
