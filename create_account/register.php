@@ -34,8 +34,8 @@ if ($stmt = $con->prepare('SELECT password FROM users WHERE user_name = ?')) {
 		// Username doesnt exists, insert new account
         if ($stmt = $con->prepare('INSERT INTO users (user_name, password) VALUES (?, ?)')) {
 	    // We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
-	        //$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-	        $stmt->bind_param('ss', $_POST['username'], $_POST['password']);
+	        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+	        $stmt->bind_param('ss', $_POST['username'], $password);
 	        $stmt->execute();
             header('Location: ../index.html');
         } else {
