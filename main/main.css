@@ -31,3 +31,8 @@ body {
     background: #ddd;
     color: black;
 }
+
+#calendar {
+    display: block;
+    margin: auto;
+}
